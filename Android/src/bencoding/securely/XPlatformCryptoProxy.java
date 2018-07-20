@@ -334,19 +334,7 @@ public class XPlatformCryptoProxy  extends KrollProxy {
 	private SecretKeySpec getKey(String password)
 	        throws UnsupportedEncodingException {
 
-
-	    int keyLength = 256;
-	    byte[] keyBytes = new byte[keyLength / 8];
-	    // explicitly fill with zeros
-	    Arrays.fill(keyBytes, (byte) 0x0);
-
-	    // if password is shorter then key length, it will be zero-padded
-	    // to key length
-	    byte[] passwordBytes = password.getBytes("UTF-8");
-	    int length = passwordBytes.length < keyBytes.length ? passwordBytes.length
-	            : keyBytes.length;
-	    System.arraycopy(passwordBytes, 0, keyBytes, 0, length);
-	    SecretKeySpec key = new SecretKeySpec(keyBytes, "AES");
-	    return key;
+		byte[] encodedKey = Base64.decode(password, Base64.DEFAULT);
+		return new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
 	}
 }
