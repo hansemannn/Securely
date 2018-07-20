@@ -26,7 +26,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 public class Utils {
 
 	public static final String RESOURCE_ROOT_ASSETS = "file:///android_asset/";
-	public static final String TEMP_PREFIX = "cachebcding";
+	public static final String TEMP_PREFIX = "rpfhdheqic";
 
 	public static void streamCopy(InputStream is, OutputStream os) throws IOException {
 	    int i;
@@ -65,12 +65,7 @@ public class Utils {
 		TiBaseFile outFile = TiFileFactory.createTitaniumFile(path,false);					
         return outFile.getOutputStream(); 		
 	}
-	
-	public static File createTempFile() throws IOException{
-		File outputDir = TiApplication.getInstance().getApplicationContext().getCacheDir(); // context being the Activity pointer
-		File outputFile = File.createTempFile(TEMP_PREFIX, ".bx", outputDir);
-		return outputFile;
-	}
+
 	public static File createTempFileFromFileAtPath(String path) throws IOException{	
 		TiFileHelper helper = new TiFileHelper(TiApplication.getInstance().getApplicationContext());
 		InputStream stream = helper.openInputStream(path, true);
